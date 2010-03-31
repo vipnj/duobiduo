@@ -1,0 +1,1 @@
+compc -source-path=%filepath% -output=%filepath%\temp\p.swc -include-classes=com.duobiduo.audio.filters.TDSI.PitchFilter,com.duobiduo.audio.filters.TDSI.SolafsProcess,com.duobiduo.audio.filters.TDSI.SampleFilterCollection -compiler.debug=false -compiler.optimize=true

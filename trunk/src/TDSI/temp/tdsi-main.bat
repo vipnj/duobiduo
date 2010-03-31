@@ -1,0 +1,1 @@
+java -jar E:\workspace\Xlib-workcopy\src\com\duobiduo\audio\filters\TDSI\tdsi\tdsi.jar -dead-code-elimination true -input E:\workspace\Xlib-workcopy\XlibTest\bin\XlibTest.swf -output E:\workspace\Xlib-workcopy\src\com\duobiduo\audio\filters\TDSI\mainTDSI.swf
