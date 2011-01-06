@@ -16,6 +16,7 @@
 	import flash.media.ID3Info;
 	import flash.utils.Endian;
 	import flash.display.LoaderInfo;
+	import flash.system.LoaderContext;
 	import flash.utils.*;
 	//import com.duobiduo.utils.RunTrace;
 	/**
@@ -53,7 +54,7 @@
 		private var _streamUrl:URLRequest;			//流链接
 		private var _loadBytes:ByteArray;			//直接加载二进制，可用于播放本地文件
 		private var _loadMode:int = 0;				//加载模式,0：未设置；1：URLStream模式；2：loadBytes模式		
-		
+		private var _loaderContext:LoaderContext;
 		private static var _channelList:Array = new Array();
 		private static var $bitRates:Array=[-1,32,40,48,56,64,80,96,112,128,160,192,224,256,320,-1,-1,8,16,24,32,40,48,56,64,80,96,112,128,144,160,-1];
 		private static var $versions:Array=[2.5,-1,2,1];
@@ -101,6 +102,9 @@
 			_swfBytesLoader = new Loader();
 			_swfBytesLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onSwfCreated );
 			_swfBytesLoader.contentLoaderInfo.addEventListener(Event.UNLOAD, onSwfUnload );
+			 
+			//_loaderContext = new LoaderContext(); 
+		　　//_loaderContext.allowLoadBytesCodeExecution = true; 
 			
 			//初始化decoder
 			if (decoder)
@@ -536,7 +540,7 @@
 			_swfBytes.position = _swfSizePosition;
 			_swfBytes.writeInt( _swfBytes.length );
 			_swfBytes.position = 0;
-			_swfBytesLoader.loadBytes(_swfBytes);
+		　　_swfBytesLoader.loadBytes(_swfBytes);// , _loaderContext);
 			
 		}
 		
@@ -729,7 +733,7 @@
 			_swfBytesLoader = new Loader();
 			_swfBytesLoader.contentLoaderInfo.addEventListener(Event.COMPLETE, onSwfCreated );
 			_swfBytesLoader.contentLoaderInfo.addEventListener(Event.UNLOAD, onSwfUnload );
-			_swfBytesLoader.loadBytes(_swfBytes);
+			_swfBytesLoader.loadBytes(_swfBytes);// , _loaderContext);
 			//RunTrace.show("-- -    尝试加载swf数据￥￥￥￥￥￥￥￥￥￥￥￥￥");
 		}
 		
