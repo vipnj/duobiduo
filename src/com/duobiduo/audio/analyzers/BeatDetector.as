@@ -17,13 +17,13 @@
 			T_FILTER = 1.0 / (2.0 * Math.PI * _FREQ_LP_BEAT);
 		}
 		//public function get FREQ_LP_BEAT():Number{
-		private var _kBeatFilter:Number; // Filter coefficient
+		private var _kBeatFilter:Number=0; // Filter coefficient
 
-		private var _filter1Out:Number, _filter2Out:Number;
+		private var _filter1Out:Number=0, _filter2Out:Number=0;
 
-		private var _beatRelease:Number; // Release time coefficient
+		private var _beatRelease:Number=0; // Release time coefficient
 
-		private var _peakEnv:Number; // Peak enveloppe follower
+		private var _peakEnv:Number=0; // Peak enveloppe follower
 
 		private var _beatTrigger:Boolean; // Schmitt trigger output
 
@@ -31,7 +31,7 @@
 		
 		public var beatPulse:Boolean; // Beat detector output
 		
-		public function BeatDetector() 
+		public function BeatDetector(sampleRate:Number=44100) 
 		{
 			_filter1Out=0.0;
 
@@ -43,7 +43,7 @@
 
 			_prevBeatPulse=false;
 
-			//setSampleRate(44100);
+			setSampleRate(sampleRate);
 		}
 		
 		public function setSampleRate(sampleRate:Number=44100):void 
@@ -55,7 +55,7 @@
 		
 		public function AudioProcess(input:Number):void
 		{
-			var EnvIn:Number;
+			var EnvIn:Number=0;
 
 
 
@@ -113,7 +113,6 @@
 			}
 			
 			_prevBeatPulse = _beatTrigger;
-
 		}
 		
 	}
